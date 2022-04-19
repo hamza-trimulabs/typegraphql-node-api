@@ -6,6 +6,6 @@ import UserService from "../service";
 export class VerifyUserRegistration {
   @Query(() => Boolean)
   async verifyUserRegistration(@Arg("data") data: VerifyUserRegistrationInput) {
-    return await UserService.verifyUserregistration(data);
+    return await UserService.verifyUserRegistration(data);
   }
 }

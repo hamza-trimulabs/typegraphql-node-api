@@ -1,14 +1,6 @@
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from "typeorm";
-import { ObjectType, Field, ID, registerEnumType } from "type-graphql";
-
-export enum UserType {
-  ADMIN = "ADMIN",
-  CONSUMER = "CONSUMER",
-}
-
-registerEnumType(UserType, {
-  name: "UserType",
-});
+import { ObjectType, Field, ID } from "type-graphql";
+import { UserType } from "../../constants";
 
 @Entity()
 @ObjectType()
@@ -17,13 +9,13 @@ export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Field(() => String)
+  @Field(() => String, { name: "firstName" })
   @Column()
-  firstName: string;
+  first_name: string;
 
-  @Field(() => String)
+  @Field(() => String, { name: "lastName" })
   @Column()
-  lastName: string;
+  last_name: string;
 
   @Field(() => String)
   @Column()
@@ -33,9 +25,9 @@ export class User extends BaseEntity {
   @Column()
   password: string;
 
-  @Field(() => Number)
+  @Field(() => String)
   @Column()
-  phone: number;
+  phone: string;
 
   @Field(() => String, { nullable: true })
   @Column({ nullable: true })
@@ -45,15 +37,15 @@ export class User extends BaseEntity {
   @Column({ nullable: true })
   expiry: Date;
 
-  @Field(() => Boolean)
+  @Field(() => Boolean, { name: "isActive" })
   @Column({ default: false })
-  isActive: boolean;
+  is_active: boolean;
 
-  @Field(() => UserType)
+  @Field(() => UserType, { name: "userType" })
   @Column({
     type: "enum",
     enum: UserType,
     default: UserType.CONSUMER,
   })
-  userType: UserType;
+  user_type: UserType;
 }

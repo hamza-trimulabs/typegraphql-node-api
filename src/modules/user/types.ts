@@ -1,6 +1,7 @@
-import { IsEmail } from "class-validator";
+import { IsEmail, IsPhoneNumber, Length } from "class-validator";
 import { InputType, Field, ObjectType } from "type-graphql";
-import { User, UserType } from "../../db/entity/User";
+import { UserType } from "../../constants";
+import { User } from "../../db/entity/User";
 
 @InputType()
 export class CreateUserInput {
@@ -17,11 +18,19 @@ export class CreateUserInput {
   @Field(() => String)
   password: string;
 
-  @Field(() => Number)
-  phone: number;
+  @Field(() => String)
+  @IsPhoneNumber()
+  phone: string;
 
   @Field(() => UserType, { nullable: true })
   userType: UserType;
+
+  @Field(() => String, { nullable: true })
+  @Length(6, 6)
+  otp: string;
+
+  @Field(() => Date, { nullable: true })
+  expiry: Date;
 }
 
 @InputType()
@@ -74,17 +83,16 @@ export class UpdateUserInput {
   lastName?: string;
 
   @Field({ nullable: true })
-  phone?: number;
-
-  @Field({ nullable: true })
-  userType?: UserType;
+  phone?: string;
 }
 
 @InputType()
 export class VerifyUserRegistrationInput {
   @Field(() => String)
+  @IsEmail()
   email: string;
 
   @Field(() => String)
+  @Length(6, 6)
   otp: string;
 }

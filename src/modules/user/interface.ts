@@ -1,4 +1,4 @@
-import { User } from "../../db/entity/user";
+import { User } from "../../db/entity/User";
 import {
   LoginUserInput,
   CreateUserInput,
@@ -14,5 +14,11 @@ export interface IUserService {
   login(data: LoginUserInput): Promise<LoginUserOutput>;
   update(id: number, data: UpdateUserInput): Promise<User>;
   delete(id: number): Promise<User>;
-  verifyUserregistration(data: VerifyUserRegistrationInput): Promise<boolean>;
+  verifyUserRegistration(data: VerifyUserRegistrationInput): Promise<boolean>;
+}
+
+export interface IAuthMapper {
+  dtoToEntity(req: CreateUserInput): Promise<User>;
+  updateUserData(user: User, req: UpdateUserInput): User;
+  updateUserOTP(user: User): User;
 }

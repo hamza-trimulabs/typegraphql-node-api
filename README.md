@@ -8,7 +8,6 @@ TypeGraphQL-Node-App backend
 2. Typescript
 3. Graphql Apollo (Type-Graphql)
 4. TypeOrm
-5. Prettier
 
 ## Get Started
 
