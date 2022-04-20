@@ -27,5 +27,3 @@ process.env.NODE_ENV === "staging"
         migrationsDir: "src/db/migration",
       },
     };
-
-// postgres://mtstkiufhxcgoi:436a86feaa4257928bdf26b57e3162eb2147e2b235abf29d875ef98628cadf89@ec2-34-231-63-30.compute-1.amazonaws.com:5432/d68ok4j9ce106d
