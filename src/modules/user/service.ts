@@ -9,11 +9,7 @@ import {
   VerifyUserRegistrationInput,
 } from "./types";
 import { jwtAuth } from "./utils/jwtAuth";
-import {
-  verifyExipryDate,
-  verifyPassword,
-  generateOTP,
-} from "../user/utils/index";
+import { verifyExipryDate, verifyPassword } from "../user/utils/index";
 import { sendEmail } from "./utils/nodemailer";
 import AuthMapper from "../user/mapper";
 import { EMAIL_BODY, EMAIL_SUBJECT } from "../../constants";

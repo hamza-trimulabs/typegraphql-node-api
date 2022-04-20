@@ -1,10 +1,9 @@
 import bcrypt from "bcrypt";
-import { SALT_ROUND } from "../../../constants";
+import { SALT_ROUND, EXPIRY_MINS_TO_ADD } from "../../../constants";
 
 export const getExpiryDate = (): Date => {
-  const minutesToAdd: number = 10;
   const currentDate: Date = new Date();
-  return new Date(currentDate.getTime() + minutesToAdd * 60000);
+  return new Date(currentDate.getTime() + EXPIRY_MINS_TO_ADD * 60000);
 };
 
 export const verifyExipryDate = (expiryDate: Date): Boolean => {
