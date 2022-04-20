@@ -1,7 +1,7 @@
 import { User } from "../../db/entity/User";
 import { IAuthMapper } from "./interface";
 import { CreateUserInput, UpdateUserInput } from "./types";
-import { getExpiryDate, createHash } from "../user/utils/index";
+import { getExpiryDate, createHash, generateOTP } from "../user/utils/index";
 
 class AuthMapper implements IAuthMapper {
   async dtoToEntity(req: CreateUserInput): Promise<User> {
@@ -12,7 +12,7 @@ class AuthMapper implements IAuthMapper {
     user.password = await createHash(req.password);
     user.phone = req.phone;
     user.user_type = req.userType;
-    user.otp = req.otp ?? "";
+    user.otp = generateOTP();
     user.expiry = getExpiryDate();
     return user;
   }

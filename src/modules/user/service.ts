@@ -16,12 +16,13 @@ import {
 } from "../user/utils/index";
 import { sendEmail } from "./utils/nodemailer";
 import AuthMapper from "../user/mapper";
+import { EMAIL_BODY, EMAIL_SUBJECT } from "../../constants";
 
 @Service()
 class UserService implements IUserService {
   async getUsers(): Promise<User[]> {
     const users: User[] | undefined = await User.find();
-    if (users.length === 0) throw new Error("No user found");
+    if (users.length === 0) throw new Error("No users found");
     return users;
   }
 
@@ -36,12 +37,11 @@ class UserService implements IUserService {
       where: { email: data.email },
     });
     if (user) throw new Error("User already registered");
-    const otp = generateOTP();
-    const subject = "Email verification";
-    const body = "Please note the OTP: " + otp;
-    await sendEmail(data.email, subject, body);
-    data.otp = otp;
+
     user = await AuthMapper.dtoToEntity(data);
+
+    await sendEmail(data.email, EMAIL_SUBJECT, `${EMAIL_BODY}${user.otp}`);
+
     await user.save();
     const token = jwtAuth({
       id: user.id,
