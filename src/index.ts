@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 4000;
 async function main() {
   await createConnection();
   const schema = await buildSchema({
-    resolvers: [__dirname + "/modules/user/resolvers/**/*.resolver.ts"], // add this
+    resolvers: [__dirname + "/modules/**/resolvers/**/*.resolver.ts"], // add this
   });
   const server = new ApolloServer({ schema });
   await server.listen(PORT);
