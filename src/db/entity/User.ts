@@ -1,6 +1,14 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from "typeorm";
+import {
+  Entity,
+  BaseEntity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  JoinTable,
+} from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
 import { UserType } from "../../constants";
+import { UserCourse } from "./UserCourse";
 
 @Entity()
 @ObjectType()
@@ -48,4 +56,8 @@ export class User extends BaseEntity {
     default: UserType.CONSUMER,
   })
   user_type: UserType;
+
+  @OneToMany(() => UserCourse, (userCourse) => userCourse.user)
+  @JoinTable()
+  userCourse: UserCourse[];
 }
