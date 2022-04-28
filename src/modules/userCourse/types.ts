@@ -1,7 +1,7 @@
 import { Field, ID, InputType } from "type-graphql";
 
 @InputType()
-export class RegisterUserCourseInput {
+export class UserCourseInput {
   @Field(() => ID)
   courseId: number;
 
