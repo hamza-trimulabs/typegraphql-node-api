@@ -1,13 +1,16 @@
-import { Arg, Mutation, Resolver } from "type-graphql";
-import { RegisterUserCourseInput } from "../types";
+import { Arg, Mutation, Resolver, UseMiddleware } from "type-graphql";
+import { UserCourseInput } from "../types";
 import { UserCourse } from "../../../db/entity/UserCourse";
 import CourseService from "../service";
+import { Authentication } from "../../middleware/Authentication";
+import { AdminAuthentication } from "../../middleware/AdminAuthentication";
 
 @Resolver()
 export class RegisterUserCourseResolver {
   @Mutation(() => UserCourse)
+  @UseMiddleware(Authentication, AdminAuthentication)
   async registerUserCourse(
-    @Arg("req") req: RegisterUserCourseInput
+    @Arg("req") req: UserCourseInput
   ): Promise<UserCourse> {
     return await CourseService.registerUserCourse(req);
   }

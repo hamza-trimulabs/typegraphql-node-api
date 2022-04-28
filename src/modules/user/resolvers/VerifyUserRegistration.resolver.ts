@@ -1,10 +1,10 @@
-import { Resolver, Query, Arg } from "type-graphql";
+import { Resolver, Arg, Mutation } from "type-graphql";
 import { VerifyUserRegistrationInput } from "../types";
 import UserService from "../service";
 
 @Resolver()
 export class VerifyUserRegistration {
-  @Query(() => Boolean)
+  @Mutation(() => Boolean)
   async verifyUserRegistration(@Arg("data") data: VerifyUserRegistrationInput) {
     return await UserService.verifyUserRegistration(data);
   }

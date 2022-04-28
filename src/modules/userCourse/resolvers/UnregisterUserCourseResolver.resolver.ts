@@ -1,15 +1,17 @@
 import { Arg, Mutation, Resolver, UseMiddleware } from "type-graphql";
-import { Course } from "../../../db/entity/Course";
-import { CreateCourseInput } from "../types";
+import { UserCourse } from "../../../db/entity/UserCourse";
+import { UserCourseInput } from "../types";
 import CourseService from "../service";
 import { Authentication } from "../../middleware/Authentication";
 import { AdminAuthentication } from "../../middleware/AdminAuthentication";
 
 @Resolver()
-export class CreateCourseResolver {
-  @Mutation(() => Course)
+export class UnregisterUserCourse {
+  @Mutation(() => UserCourse)
   @UseMiddleware(Authentication, AdminAuthentication)
-  async createCourse(@Arg("req") req: CreateCourseInput): Promise<Course> {
-    return await CourseService.createCourse(req);
+  async unregisterUserCourse(
+    @Arg("req") req: UserCourseInput
+  ): Promise<UserCourse> {
+    return await CourseService.unregisterUserCourse(req);
   }
 }

@@ -12,7 +12,7 @@ export interface IUserService {
   getUser(id: number): Promise<User>;
   register(data: CreateUserInput): Promise<LoginUserOutput>;
   login(data: LoginUserInput): Promise<LoginUserOutput>;
-  update(id: number, data: UpdateUserInput): Promise<User>;
+  update(data: UpdateUserInput): Promise<User>;
   delete(id: number): Promise<User>;
   verifyUserRegistration(data: VerifyUserRegistrationInput): Promise<boolean>;
 }

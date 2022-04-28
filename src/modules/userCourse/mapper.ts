@@ -1,7 +1,7 @@
 import { UserCourse } from "../../db/entity/UserCourse";
-import { ICourseMapper } from "./interface";
+import { IUserCourseMapper } from "./interface";
 
-class CourseMapper implements ICourseMapper {
+class UserCourseMapper implements IUserCourseMapper {
   registerUserCourse(userId: number, courseId: number): UserCourse {
     const userCourse: UserCourse | undefined = new UserCourse();
     userCourse.user_id = userId;
@@ -10,4 +10,4 @@ class CourseMapper implements ICourseMapper {
   }
 }
 
-export default <ICourseMapper>new CourseMapper();
+export default <IUserCourseMapper>new UserCourseMapper();

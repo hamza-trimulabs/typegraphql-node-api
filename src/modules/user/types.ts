@@ -76,6 +76,9 @@ export class LoginUserOutput {
 
 @InputType()
 export class UpdateUserInput {
+  @Field()
+  id: number;
+
   @Field({ nullable: true })
   firstName?: string;
 
