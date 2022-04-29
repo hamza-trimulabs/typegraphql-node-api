@@ -63,8 +63,8 @@ class UserService implements IUserService {
     return { user, token };
   }
 
-  async update(data: UpdateUserInput): Promise<User> {
-    let user: User | undefined = await User.findOne({ where: { id: data.id } });
+  async update(id: number, data: UpdateUserInput): Promise<User> {
+    let user: User | undefined = await User.findOne({ where: { id } });
     if (!user) throw new Error("User not found!");
     user = AuthMapper.updateUserData(user, data);
     await user.save();

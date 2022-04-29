@@ -21,4 +21,5 @@ export const sendEmail = async (
     subject: subject, // Subject line
     text: body, // plain text body
   });
+  if (!info) throw new Error("Email failed!");
 };

@@ -1,11 +1,12 @@
 import { UserCourse } from "../../db/entity/UserCourse";
 import { IUserCourseMapper } from "./interface";
+import { UserCourseInput } from "./types";
 
 class UserCourseMapper implements IUserCourseMapper {
-  registerUserCourse(userId: number, courseId: number): UserCourse {
+  registerUserCourse(req: UserCourseInput): UserCourse {
     const userCourse: UserCourse | undefined = new UserCourse();
-    userCourse.user_id = userId;
-    userCourse.course_id = courseId;
+    userCourse.user_id = req.userId;
+    userCourse.course_id = req.courseId;
     return userCourse;
   }
 }
