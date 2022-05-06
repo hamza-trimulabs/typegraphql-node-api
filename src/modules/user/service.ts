@@ -53,7 +53,7 @@ class UserService implements IUserService {
 
     user = await AuthMapper.dtoToEntity(data);
 
-    await sendEmail(data.email, EMAIL_SUBJECT, `${EMAIL_BODY}${user.otp}`);
+    // await sendEmail(data.email, EMAIL_SUBJECT, `${EMAIL_BODY}${user.otp}`);
 
     await user.save();
     const token = jwtAuth({
