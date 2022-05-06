@@ -2,6 +2,9 @@ import { Resolver, Arg, Mutation } from "type-graphql";
 import { LoginUserInput, LoginUserOutput } from "../types";
 import UserService from "../service";
 
+/**
+ * Resolver to login the user
+ */
 @Resolver()
 export class LoginUserResolver {
   @Mutation(() => LoginUserOutput)

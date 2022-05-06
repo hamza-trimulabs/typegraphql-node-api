@@ -1,5 +1,12 @@
 import nodemailer from "nodemailer";
 
+/**
+ * Send email with the specified receiver's email, email subject and the email body
+ *
+ * @param email
+ * @param subject
+ * @param body
+ */
 export const sendEmail = async (
   email: string,
   subject: string,

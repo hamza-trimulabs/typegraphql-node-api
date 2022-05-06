@@ -8,6 +8,12 @@ import CourseService from "../course/service";
 
 @Service()
 class UserCourseService implements IUserCourseService {
+  /**
+   * Get a user-course with specific id
+   *
+   * @param req
+   * @returns {UserCourse}
+   */
   async getUserCourse(req: UserCourseInput): Promise<UserCourse> {
     let userCourse: UserCourse | undefined = await UserCourse.findOne({
       where: { user_id: req.userId, course_id: req.courseId },
@@ -16,6 +22,12 @@ class UserCourseService implements IUserCourseService {
     return userCourse;
   }
 
+  /**
+   * Get all the user-courses
+   *
+   * @param userId
+   * @returns {UserCourse[]}
+   */
   async getUserCourses(userId: number): Promise<UserCourse[]> {
     const userCourses: UserCourse[] | undefined = await UserCourse.find({
       where: { user_id: userId },
@@ -25,6 +37,12 @@ class UserCourseService implements IUserCourseService {
     return userCourses;
   }
 
+  /**
+   * Register a user-course with the input provided
+   *
+   * @param req
+   * @returns {UserCourse}
+   */
   async registerUserCourse(req: UserCourseInput): Promise<UserCourse> {
     await UserService.getUser(req.userId);
     await CourseService.getCourse(req.courseId);
@@ -37,6 +55,12 @@ class UserCourseService implements IUserCourseService {
     return userCourse;
   }
 
+  /**
+   * Unregister a user-course with the input provided
+   *
+   * @param req
+   * @returns {UserCourse}
+   */
   async unregisterUserCourse(req: UserCourseInput): Promise<UserCourse> {
     await UserService.getUser(req.userId);
     await CourseService.getCourse(req.courseId);

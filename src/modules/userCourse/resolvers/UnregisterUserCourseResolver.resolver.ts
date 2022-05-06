@@ -5,6 +5,9 @@ import CourseService from "../service";
 import { Authentication } from "../../middleware/Authentication";
 import { AdminAuthentication } from "../../middleware/AdminAuthentication";
 
+/**
+ * Resolver to unregister a user-course
+ */
 @Resolver()
 export class UnregisterUserCourse {
   @Mutation(() => UserCourse)
