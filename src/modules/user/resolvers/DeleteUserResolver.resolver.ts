@@ -4,6 +4,9 @@ import UserService from "../service";
 import { Authentication } from "../../middleware/Authentication";
 import { AdminAuthentication } from "../../middleware/AdminAuthentication";
 
+/**
+ * Resolver to delete a user
+ */
 @Resolver()
 export class DeleteUsersResolver {
   @Mutation(() => User)

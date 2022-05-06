@@ -11,6 +11,8 @@ async function main() {
   const schema = await buildSchema({
     resolvers: [__dirname + "/modules/**/resolvers/**/*.resolver.ts"],
   });
+  // Create the Apollo Server
+  // Setting the context with the headers
   const server = new ApolloServer({
     schema,
     context: ({ req }) => {

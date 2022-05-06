@@ -4,6 +4,9 @@ import CourseService from "../service";
 import { Authentication } from "../../middleware/Authentication";
 import { AdminAuthentication } from "../../middleware/AdminAuthentication";
 
+/**
+ * Resolver to delete a course
+ */
 @Resolver()
 export class deleteCourse {
   @Mutation(() => Course)

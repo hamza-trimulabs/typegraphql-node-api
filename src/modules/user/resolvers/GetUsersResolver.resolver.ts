@@ -4,6 +4,9 @@ import UserService from "../service";
 import { Authentication } from "../../middleware/Authentication";
 import { AdminAuthentication } from "../../middleware/AdminAuthentication";
 
+/**
+ * Resolver to get all the users
+ */
 @Resolver()
 export class GetUsersResolver {
   @Query(() => [User])

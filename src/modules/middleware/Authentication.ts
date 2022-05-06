@@ -7,6 +7,14 @@ import { Service } from "typedi";
 
 @Service()
 export class Authentication implements MiddlewareInterface<Context> {
+  /**
+   * Authenticates the auth token provided
+   * Get the session info and set the user in context
+   *
+   * @param param0
+   * @param next
+   * @returns {NextFn}
+   */
   async use({ context }: ResolverData<Context>, next: NextFn) {
     const token: string = context["headers"].authorization;
     if (!token) throw new Error("Please Provide Auth Token!");

@@ -3,6 +3,9 @@ import { UserCourse } from "../../../db/entity/UserCourse";
 import { UserCourseInput } from "../types";
 import UserCourseService from "../service";
 
+/**
+ * Resolver to get a specific user-course based on user and course ids
+ */
 @Resolver()
 export class GetUserCourse {
   @Query(() => UserCourse)

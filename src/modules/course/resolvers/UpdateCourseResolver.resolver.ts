@@ -5,6 +5,9 @@ import CourseService from "../service";
 import { Authentication } from "../../middleware/Authentication";
 import { AdminAuthentication } from "../../middleware/AdminAuthentication";
 
+/**
+ * Resolver to update a specific course based on id and input
+ */
 @Resolver()
 export class UpdateCourseResolver {
   @Mutation(() => Course)
